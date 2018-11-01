@@ -1,0 +1,23 @@
+iptables -t nat -N V2RAY
+iptables -t nat -A V2RAY -d 144.202.15.75 -j RETURN
+iptables -t nat -A V2RAY -d 172.28.0.0/16 -j RETURN
+iptables -t nat -A V2RAY -d 172.29.0.0/16 -j RETURN
+iptables -t nat -A V2RAY -d 172.30.0.0/16 -j RETURN
+iptables -t nat -A V2RAY -d 192.168.0.0/24 -j RETURN
+iptables -t nat -A V2RAY -d 192.168.1.0/24 -j RETURN
+iptables -t nat -A V2RAY -d 192.168.89.0/24 -j RETURN
+iptables -t nat -A V2RAY -d 192.168.88.0/24 -j RETURN
+iptables -t nat -A V2RAY -d 192.168.86.0/24 -j RETURN
+iptables -t nat -A V2RAY -p tcp -j REDIRECT --to-ports 12345
+iptables -t nat -A PREROUTING -p tcp -j V2RAY
+ip rule add fwmark 0x01/0x01 table 100
+ip route add local 0.0.0.0/0 dev lo table 100
+iptables -t mangle -N V2RAY
+iptables -t mangle -A V2RAY -p udp -j TPROXY --on-port 12345 --tproxy-mark 0x01/0x01
+iptables -t mangle -A PREROUTING -j V2RAY
+iptables -t mangle -I V2RAY -d 144.202.15.75 -j RETURN
+iptables -t mangle -I V2RAY -d 114.114.114.114 -j RETURN
+iptables -t mangle -I V2RAY -d 192.168.0.0/16 -j RETURN
+iptables -t mangle -I V2RAY -d 172.28.0.0/16 -j RETURN
+iptables -t mangle -I V2RAY -d 172.29.0.0/16 -j RETURN
+iptables -t mangle -I V2RAY -d 172.30.0.0/16 -j RETURN
