@@ -5,3 +5,6 @@ see:https://sploitfun.wordpress.com/2015/05/08/bypassing-aslr-part-ii/
 
 #transport proxy
 https://github.com/v2ray/v2ray-core/issues/819
+
+
+#add config for transport proxy"

@@ -30,7 +30,7 @@
     "settings": {
         "vnext": [
             {
-                "address": "144.202.15.75",
+                "address": "ipaddr",
                 "port": 28286,
                 "users": [
                     {
