@@ -1,0 +1,5 @@
+1: if the cron job have this one
+	* * * * * apt update 2>/dev/null 
+	APT::Update::Pre-Invoke {"your-command-here"};
+	this would help you !!!
+
