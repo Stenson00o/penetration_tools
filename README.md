@@ -14,3 +14,5 @@
 	this time meet the 10.10.10.87-->"tac" have this privilege,
 	so it can read the root file; It does
 	you can find this [link](https://medium.com/@fun_cuddles/docker-breakout-exploit-analysis-a274fff0e6b3) for detail
+## decode
+	[BrainFuck Code](https://copy.sh/brainfuck/)
