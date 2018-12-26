@@ -1,4 +1,5 @@
 pinkdbv3:
+    Debian 4.9.82-1+deb9u3 
     gcc, format string payload, wfuzz, crunch, 
     insmod exploit, drupal, socat ,bind shell,
     getenvaddr, shell storm
