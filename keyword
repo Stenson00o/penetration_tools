@@ -3,3 +3,6 @@ pinkdbv3:
     gcc, format string payload, wfuzz, crunch, 
     insmod exploit, drupal, socat ,bind shell,
     getenvaddr, shell storm
+
+Acess:
+	powershell
