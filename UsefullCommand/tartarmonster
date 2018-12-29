@@ -1,0 +1,23 @@
+1. github search issue to find exploit
+2. find the vp in wpscan, then use searchsploit 
+    see which you can find
+3. tar with no passwd
+    google GTFOBINS 
+    type tar, looking shell
+    sudo -u onuma tar ... to get shell
+4. watch -n 1 'systemctl list-timers' 
+    watch the command execute every one seconds
+
+5. tar execute zcvf can maintain the own file
+    id
+    uid = 1000
+    file belong root
+    ls -la 
+    root  root test
+    tar  zcvf test.tar test
+    tart xvf test.tar -C ./
+    ls -al 
+    root root test
+    --
+    so you can see that -- tar doesn't change the file profile.
+
