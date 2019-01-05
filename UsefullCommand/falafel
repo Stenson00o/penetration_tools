@@ -1,0 +1,4 @@
+fuzz name
+--> wfuzz -c -z file,names.txt --hw  -d  "username=FUZZ" -u http://ip/uri
+--> names.txt from seclists
+
