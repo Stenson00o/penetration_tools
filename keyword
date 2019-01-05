@@ -6,3 +6,7 @@ pinkdbv3:
 
 Acess:
 	powershell
+
+Silo:
+    oracle odat
+
