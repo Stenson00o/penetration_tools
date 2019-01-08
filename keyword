@@ -12,6 +12,7 @@ Silo:
 
 MisChief
     ipv6  snmp xxr ping6, bypass command bloc in bash use "?"
+    nc reverse to ipv6
     acl 
     find create file time find command
 Lame:
