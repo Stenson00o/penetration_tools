@@ -17,6 +17,9 @@ MisChief
     find create file time find command
 Lame:
     smbconnect
+Beep:
+	LFI by smtp
+	shellsock in user-agent
 
 Bastard:
 	powershell
