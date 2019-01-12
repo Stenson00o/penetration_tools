@@ -26,3 +26,7 @@ Bastard:
 	drupal
 	php upload file
 	
+Chatterbox:
+    powershell runas get-acl credential Empire
+
+
