@@ -28,5 +28,6 @@ Bastard:
 	
 Chatterbox:
     powershell runas get-acl credential Empire
-
+Europacorp:
+    php reg null byte exploit
 
