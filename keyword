@@ -25,4 +25,6 @@ Bastard:
 	powershell
 	drupal
 	php upload file
-	
+Sense:
+	python reverse shell
+
