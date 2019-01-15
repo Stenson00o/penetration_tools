@@ -25,14 +25,11 @@ Bastard:
 	powershell
 	drupal
 	php upload file
-<<<<<<< HEAD
 Sense:
 	python reverse shell
-=======
 	
 Chatterbox:
     powershell runas get-acl credential Empire
 Europacorp:
     php reg null byte exploit
->>>>>>> ca34310d624f8731ea5687edd8df8a960dfcded4
 
