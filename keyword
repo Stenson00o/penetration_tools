@@ -33,3 +33,9 @@ Chatterbox:
 Europacorp:
     php reg null byte exploit
 
+Fighter:
+	mssql injection (important)
+
+Lazy:
+   cdmin->bdmin->admin
+   BurpSuite Intruder->bitFlip
