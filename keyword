@@ -35,7 +35,16 @@ Europacorp:
 
 Fighter:
 	mssql injection (important)
+	juicy potato
+	visual studio
+	c:\windows\syswow64\windowspowershell\v1.0\powershell is 32bit
+
 
 Lazy:
    cdmin->bdmin->admin
    BurpSuite Intruder->bitFlip
+
+Optimum:
+   %SystemRoot%\sysnative\WindowsPowerShell\v1.0\powershell.exe
+    ms17-010
+

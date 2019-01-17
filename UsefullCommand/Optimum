@@ -1,0 +1,4 @@
+sysnative powershell
+%SystemRoot%\sysnative\WindowsPowerShell\v1.0\powershell.exe
+
+
