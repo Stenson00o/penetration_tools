@@ -48,3 +48,8 @@ Optimum:
    %SystemRoot%\sysnative\WindowsPowerShell\v1.0\powershell.exe
     ms17-010
 
+Reddish:
+	test tcp
+	test machine alive
+	proxy tunnel
+
