@@ -47,4 +47,6 @@ Lazy:
 Optimum:
    %SystemRoot%\sysnative\WindowsPowerShell\v1.0\powershell.exe
     ms17-010
-
+Miria:
+    dns transfer
+    file recovery in /dev/sdb

@@ -1,0 +1,14 @@
+curl --vvv web.com --> see the detail
+
+dns listen in  tcp, so it may be have the transfer 
+dig axfr@10.10.10.18 pi.hole
+
+string /dev/sdb
+
+which dcfldd
+ ssh pi@10.10.10.48 "sudo dcfldd if=/dev/sdb | gzip -1 -" | dcfldd of=pi.gg.zz
+
+gunzip pi.gg.zz
+testdisk pi.dd -> None->Advance-List-->
+photorec pi.dd
+
