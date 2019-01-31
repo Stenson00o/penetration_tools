@@ -50,3 +50,14 @@ Optimum:
 Miria:
     dns transfer
     file recovery in /dev/sdb
+
+Reddish:
+	test tcp
+	test machine alive
+	proxy tunnel
+
+Brainfuck:
+ one time pad crypt
+ wps plugin exploit
+ telnet imap
+
