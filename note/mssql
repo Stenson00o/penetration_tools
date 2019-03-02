@@ -1,0 +1,15 @@
+SELECT CONVERT(INT, ISNULL(value, value_in_use)) AS config_value FROM  sys.configurations WHERE  name = 'xp_cmdshell' ;
+https://www.adampalmer.me/iodigitalsec/2013/08/10/accessing-and-hacking-mssql-from-backtrack-linux/
+
+
+exec sp_configure ‘show advanced options’, 1
+go
+reconfigure
+go
+exec sp_configure ‘xp_cmdshell’, 1
+go
+reconfigure
+go
+
+1> exec master..xp_cmdshell 'cmd /c dir c:\';
+2> go
