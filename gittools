@@ -1,3 +1,9 @@
 An exploit for Apache Struts CVE-2017-5638
-https://github.com/mazen160/struts-pwn
+	https://github.com/mazen160/struts-pwn
+
+dirsearch is a simple command line tool designed to brute force directories and files in websites.
+	https://github.com/maurosoria/dirsearch
+
+Merlin is a cross-platform post-exploitation HTTP/2 Command & Control  server and agent written in golang.
+	https://github.com/Ne0nd0g/merlin
 
