@@ -121,5 +121,11 @@ echo a > /dev/tcp/10.120.15.10/21 && echo on
 
 by the way, we can use the static-nmap https://github.com/andrew-d/static-binaries/blob/master/binaries/linux/x86_64/nmap  .
 
-so we know the ftp on 10.120.15.10, but login with anonymous 
+so we know the ftp on 10.120.15.10, but login with anonymous  will fail.
+
+we use the [LinEnum.sh]()  to enum the system, we found that there is the cron job
+
+*/10 * * * * /opt/restore.sh
+
+so we try to  use the vtysh login in the [quagga]()  version.
 
