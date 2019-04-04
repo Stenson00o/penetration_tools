@@ -8,6 +8,8 @@ Merlin is a cross-platform post-exploitation HTTP/2 Command & Control  server an
 	https://github.com/Ne0nd0g/merlin
 
 alamot code-snippets
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 XML External Entity
 	https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XXE%20Injection
@@ -36,3 +38,9 @@ Modified version of RottenPotatoNG C++ (/https://github.com/foxglovesec/RottenPo
 bruteforce-salted-openssl
 The purpose of this program is to try to find the password of a file that was encrypted with the 'openssl' command (e.g.: openssl enc -aes256 -salt -in clear.file -out encrypted.file).
 	https://github.com/glv2/bruteforce-salted-openssl
+=======
+ruby winru_shell_with_upload
+>>>>>>> Stashed changes
+=======
+ruby winru_shell_with_upload
+>>>>>>> Stashed changes
