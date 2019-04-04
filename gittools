@@ -9,3 +9,30 @@ Merlin is a cross-platform post-exploitation HTTP/2 Command & Control  server an
 
 alamot code-snippets
 
+XML External Entity
+	https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XXE%20Injection
+
+ODAT (Oracle Database Attacking Tool) is an open source penetration testing tool that tests the security of Oracle Databases remotely.https://github.com/quentinhardy/odat
+
+
+Volatility Foundation
+============================================================================
+Volatility Framework - Volatile memory extraction utility framework
+============================================================================
+The Volatility Framework is a completely open collection of tools,
+implemented in Python under the GNU General Public License, for the
+extraction of digital artifacts from volatile memory (RAM) samples.
+The extraction techniques are performed completely independent of the
+system being investigated but offer visibilty into the runtime state
+of the system. The framework is intended to introduce people to the
+techniques and complexities associated with extracting digital artifacts
+from volatile memory samples and provide a platform for further work into
+this exciting area of research.
+	https://github.com/volatilityfoundation/volatility
+
+Modified version of RottenPotatoNG C++ (/https://github.com/foxglovesec/RottenPotatoNG). Only exe branch. This version includes the API calls to CreateProcesAsUser() and CreateProcessWithTokenW() in order to execute a process passed from command line. Command line args are:
+	https://github.com/decoder-it/lonelypotato
+
+bruteforce-salted-openssl
+The purpose of this program is to try to find the password of a file that was encrypted with the 'openssl' command (e.g.: openssl enc -aes256 -salt -in clear.file -out encrypted.file).
+	https://github.com/glv2/bruteforce-salted-openssl
