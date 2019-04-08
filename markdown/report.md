@@ -847,5 +847,5 @@ webalizer:!!:13653:0:99999:7:::
 xfs:!!:13653:0:99999:7:::
 ntp:!!:13653:0:99999:7:::
 mysql:!!:13653:0:99999:7:::
-bob:$1$Rrhb4lzg$Ee8/JYZjv.NimwyrSEL6R/:16903:0:99999:7:::
-alice:$1$BfWG661G$ye24xqRQEx.nq.bZTATwf.:16917:0:99999:7:::
+bob:$1$Rrhb4lzg$Ee8/JYZjv.NimwyrSEL6R/:16903:0:99999:7:::BUGZBUNNY
+alice:$1$BfWG661G$ye24xqRQEx.nq.bZTATwf.:16917:0:99999:7:::loading1
